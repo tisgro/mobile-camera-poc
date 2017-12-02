@@ -41,6 +41,17 @@
       line-height: 1em;
     }
 
+    .upload-button {
+      padding: .5rem 1rem;
+      border: none;
+      border-radius: 0;
+      color: #fff;
+      background: #4286f5;
+      font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
     .upload-input::-webkit-file-upload-button {
       padding: .5rem 1rem;
       border: none;
@@ -74,6 +85,7 @@
     </div>
     <div class="upload">
       <div class="upload-title">Live Upload</div>
+      <button class="upload-button" id="capture-button">Capture</button>
       <video autoplay class="upload-video"></video>
       <canvas class="upload-canvas"></canvas>
     </div>
@@ -111,10 +123,14 @@
       console.log('navigator.getUserMedia error: ', error);
     }
 
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(handleSuccess)
-      .catch(handleError);
+    function capture() {
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(handleSuccess)
+        .catch(handleError);
+    }
+
+    document.querySelector('#capture-button').addEventListener('click', capture);
 
     </script>
   </body>
