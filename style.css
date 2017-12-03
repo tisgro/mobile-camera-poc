@@ -1,5 +1,4 @@
 :root {
-  height: 100%;
   font: 16px -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 300;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -7,22 +6,13 @@
 }
 
 body {
-  height: 100%;
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 2rem;
   background: linear-gradient(to bottom, #f4f4f4, #eee);
 }
 
 .upload {
-  width: 75%;
-}
-
-.upload + .upload {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .upload-title {
@@ -35,6 +25,9 @@ body {
 }
 
 .upload-button {
+  position: relative;
+  display: block;
+  width: 100%;
   padding: .5rem 1rem;
   border: none;
   border-radius: 0;
@@ -45,16 +38,13 @@ body {
   text-transform: uppercase;
 }
 
-.upload-input::-webkit-file-upload-button {
-  padding: .5rem 1rem;
-  border: none;
-  border-radius: 0;
-  color: #fff;
-  background: #4286f5;
-  font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  -webkit-appearance: none;
+.upload-input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
 }
 
 .upload-video,
@@ -63,4 +53,13 @@ body {
   height: 100px;
   border: 1px solid #ddd;
   margin-right: .5rem;
+}
+
+.preview {
+  display: block;
+  box-sizing: border-box;
+  padding: 1px;
+  border: 1px solid #ddd;
+  width: 100%;
+  visibility: hidden;
 }

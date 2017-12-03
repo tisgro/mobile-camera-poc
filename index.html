@@ -8,13 +8,20 @@
   <body>
     <div class="upload">
       <div class="upload-title">Basic Upload</div>
-      <input type="file" accept="image/*" class="upload-input">
+      <button class="upload-button">
+        Choose File
+        <input type="file" accept="image/*" class="upload-input">
+      </button>
     </div>
     <div class="upload">
-      <div class="upload-title">Direct Upload</div>
-      <input type="file" accept="image/*" capture="environment" class="upload-input">
+      <div class="upload-title">Direct Capture</div>
+      <button class="upload-button">
+        Take Photo
+        <input type="file" accept="image/*" capture="environment" class="upload-input">
+      </button>
     </div>
-    <div class="upload">
+    <img class="preview">
+    <div class="upload" style="display:none;">
       <div class="upload-title">Live Upload</div>
       <button class="upload-button" id="capture-button">Capture</button>
       <video autoplay class="upload-video"></video>
