@@ -20,13 +20,15 @@
         <input type="file" accept="image/*" capture="environment" class="upload-input">
       </button>
     </div>
-    <img class="preview">
-    <div class="upload" style="display:none;">
+    <div class="upload">
       <div class="upload-title">Live Upload</div>
       <button class="upload-button" id="capture-button">Capture</button>
-      <video autoplay class="upload-video"></video>
-      <canvas class="upload-canvas"></canvas>
+      <button class="upload-button" id="snapshot-button">Take Photo</button>
     </div>
+    <video autoplay class="preview-video"></video>
+    <img class="preview-img"/>
+    <canvas class="preview-canvas"></canvas>
+    <div class="msg"></div>
     <script src="app.js"></script>
   </body>
 </html>

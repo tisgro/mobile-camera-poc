@@ -38,6 +38,10 @@ body {
   text-transform: uppercase;
 }
 
+#snapshot-button {
+  display: none;
+}
+
 .upload-input {
   position: absolute;
   top: 0;
@@ -47,19 +51,28 @@ body {
   opacity: 0;
 }
 
-.upload-video,
-.upload-canvas {
-  width: 200px;
-  height: 100px;
-  border: 1px solid #ddd;
-  margin-right: .5rem;
-}
-
-.preview {
-  display: block;
+.preview-video,
+.preview-img,
+.preview-canvas {
+  display: none;
   box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 2rem;
   padding: 1px;
   border: 1px solid #ddd;
-  width: 100%;
-  visibility: hidden;
+}
+
+.msg {
+  display: none;
+  padding: .5rem .75rem;
+}
+
+.msg--warning {
+  border: 1px solid #FC0;
+  background: #FFC;
+}
+
+.msg--success {
+  border: 1px solid #0C0;
+  background: #DFD;
 }
