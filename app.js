@@ -96,11 +96,13 @@ fileInputs.forEach(fileInput => fileInput.addEventListener('change', handleFileI
 
 var isCapturing;
 var videoDevice;
+var sampleInterval;
 
 function toggleCapture() {
   var captureButton = document.querySelector('#capture-button');
   var snapshotButton = document.querySelector('#snapshot-button');
   var video = document.querySelector('.preview-video');
+  var canvas = document.querySelector('.preview-canvas');
 
   if (!videoDevice) {
     return;
@@ -111,6 +113,7 @@ function toggleCapture() {
     video.style.display = 'none';
     captureButton.style.display = 'block';
     snapshotButton.style.display = 'none';
+    clearInterval(sampleInterval);
     isCapturing = false;
     return;
   }
@@ -129,11 +132,25 @@ function toggleCapture() {
     .then(stream => {
       video.srcObject = stream;
       video.style.display = 'block';
+      canvas.style.display = 'none';
       captureButton.style.display = 'none';
       snapshotButton.style.display = 'block';
+      sampleInterval = setInterval(sampleBrightness, 1000);
       isCapturing = true;
     })
     .catch(error => console.log('getUserMedia error: ', error));
+}
+
+function sampleBrightness() {
+  var video = document.querySelector('.preview-video');
+  var canvas = document.querySelector('.preview-canvas');
+  var ctx = canvas.getContext('2d');
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  showBrightnessMsg();
 }
 
 function takeSnapshot() {
